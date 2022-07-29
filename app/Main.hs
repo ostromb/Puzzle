@@ -81,7 +81,7 @@ application :: WS.PendingConnection -> IO ()
 application pending = do
   con <- WS.acceptRequest pending
   WS.withPingThread con 30 (return ()) $ do
-    csvData <- BL.readFile "small_db.csv"
+    csvData <- BL.readFile "1400_1600.csv"
     let (x,xlist) =  partitionEithers [decodePuzzle csvData]
     mv <- newEmptyMVar
     forever $ do
